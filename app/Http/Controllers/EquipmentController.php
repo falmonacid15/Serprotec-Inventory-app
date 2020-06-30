@@ -10,7 +10,7 @@ use App\Business;
 
 class EquipmentController extends Controller
 {
-
+    // este metodo te lame los webos
     public function index(Request $request)
     {
         $equipments = Equipment::with('equipmentType', 'business')
