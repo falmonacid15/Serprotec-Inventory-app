@@ -21,7 +21,7 @@ class EquipmentController extends Controller
         return view('equipments.index', compact('equipments'));
     }
 
-
+        // metodo create jejeje <3
     public function create()
     {
         $equipmentTypes = EquipmentType::select('id', 'name')->get();
