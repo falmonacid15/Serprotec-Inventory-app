@@ -56,12 +56,12 @@
                                     >
                                 </div>
                                 <div class="form-group">
-                                    <label for="equipment_type_id">tipo</label>
+                                    <label for="equipment_type_id">Tipo</label>
                                     <select name="equipment_type_id" id="equipment_type_id" class="form-control">
                                         <option value="">Seleccione</option>
-                                        @foreach($equipments as $equipment)
+                                        @foreach($equipmentTypes as $equipmentType)
                                             <option
-                                                value="{{ $equipment->id}}"
+                                                value="{{ $equipmentType->id}}"
                                                 {{ ($equipment->equipment_type_id == $equipmentType->id) ? 'selected' : ''}}
                                             >
                                                 {{ "{$equipmentType->name}" }}
@@ -70,12 +70,12 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="business_id">empresa</label>
+                                    <label for="business_id">Empresa</label>
                                     <select name="business_id" id="business_id" class="form-control">
                                         <option value="">Seleccione</option>
-                                        @foreach($equipments as $equipment)
+                                        @foreach($businesses as $business)
                                             <option
-                                                value="{{ $equipment->id}}"
+                                                value="{{ $business->id}}"
                                                 {{ ($equipment->business_id == $business->id) ? 'selected' : ''}}
                                             >
                                                 {{ "{$business->name}" }}

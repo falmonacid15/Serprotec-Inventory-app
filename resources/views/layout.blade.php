@@ -129,7 +129,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('actions.index') }}" class="nav-link">
                                     <i class="nav-icon fas fa-tasks"></i>
                                     <p>Acciones OT</p>
                                 </a>

@@ -64,11 +64,11 @@ class EquipmentController extends Controller
 
     public function edit($id)
     {
-        $equipmentType = EquipmentType::select('id', 'name')->get();
-        $business = Business::select('id', 'name')->get();
         $equipment = Equipment::with('equipmentType', 'business')->find($id);
+        $equipmentTypes = EquipmentType::select('id', 'name')->get();
+        $businesses = Business::select('id', 'name')->get();
 
-        return view('equipments.edit', compact ('equipmentType', 'business', 'equipment'));
+        return view('equipments.edit', compact ('equipmentTypes', 'businesses', 'equipment'));
     }
 
 
@@ -81,11 +81,12 @@ class EquipmentController extends Controller
             'business_id' => 'required',
         ]);
 
-        $equipment = Business::find($id);
+        $equipment = Equipment::find($id);
         $equipment->brand = $request->get('brand');
         $equipment->model = $request->get('model');
         $equipment->equipment_type_id = $request->get('equipment_type_id');
         $equipment->business_id = $request->get('business_id');
+
         $equipment->save();
 
         return redirect()->route('equipments.index')->with('success','Registro exitoso');

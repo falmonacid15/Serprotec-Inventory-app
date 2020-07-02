@@ -14,5 +14,6 @@ Route::prefix('admin')->middleware('auth')->group(function (){
     Route::resource('businesses', 'BusinessController');
     Route::resource('equipment_types', 'EquipmentTypeController');
     Route::resource('equipments', 'EquipmentController');
+    Route::resource('actions', 'ActionController');
 });
 

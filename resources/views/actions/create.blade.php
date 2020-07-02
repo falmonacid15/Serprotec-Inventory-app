@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Editar tipos de equipo</h1>
+                    <h1 class="m-0 text-dark">Nueva accion</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Inicio</a></li>
-                        <li class="breadcrumb-item active">Edicion de tipos de equipo</li>
+                        <li class="breadcrumb-item active">Creacion acciones</li>
                     </ol>
                 </div>
             </div>
@@ -28,14 +28,13 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form method="POST" action="{{route('equipment_types.update',$equipment_type)}}">
+                        <form method="POST" action="{{route('actions.store')}}">
                             @csrf
-                            @method('PUT')
                             @include('partials.errors')
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Nombre</label>
-                                    <input type="text" class="form-control" id="name" name="name" value="{{$equipment_type->name}}" placeholder="Ingrese nombre">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Ingrese nombre">
                                 </div>
                             </div>
                             <!-- /.card-body -->

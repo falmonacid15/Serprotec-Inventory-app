@@ -35,7 +35,7 @@
                                     <input disabled type="text" class="form-control" name="name" value="{{$customer->name}}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="surname">Nombre</label>
+                                    <label for="surname">Apellido</label>
                                     <input disabled type="text" class="form-control" name="surname" value="{{$customer->surname}}">
                                 </div>
                                 <div class="form-group">

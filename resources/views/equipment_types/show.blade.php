@@ -31,13 +31,10 @@
                         <form>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="name">Id</label>
-                                    <input disabled type="text" class="form-control" name="id" value="{{$equipment_type->id}}">
-                                </div>
-                                <div class="form-group">
                                     <label for="name">Nombre</label>
                                     <input disabled type="text" class="form-control" name="name" value="{{$equipment_type->name}}">
                                 </div>
+                            </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
                                 <a href="{{ route('equipment_types.index') }}" class="btn btn-primary">Volver</a>
