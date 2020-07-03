@@ -10,7 +10,7 @@ use App\Business;
 
 class EquipmentController extends Controller
 {
-    // este metodo te lame los webos
+
     public function index(Request $request)
     {
         $equipments = Equipment::with('equipmentType', 'business')
@@ -21,7 +21,7 @@ class EquipmentController extends Controller
         return view('equipments.index', compact('equipments'));
     }
 
-        // metodo create jejeje <3
+
     public function create()
     {
         $equipmentTypes = EquipmentType::select('id', 'name')->get();
