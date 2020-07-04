@@ -11,6 +11,11 @@ class WorkOrder extends Model
         'service_tag', 'equipment_id', 'commune_id', 'user_id'
     ];
 
+    // nos permite manipular fecha
+    protected $dates = [
+        'start_date', 'end_date', 'start_time', 'end_time'
+    ];
+
 
     public function user()
     {

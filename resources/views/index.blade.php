@@ -39,7 +39,7 @@
                             <p>Usuarios en el sistema</p>
                         </div>
                         <div class="icon">
-                            <i class="fa fa-users"></i>
+                            <i class="fa fa-users-cog"></i>
                         </div>
                         <a href="{{ route('users.index') }}" class="small-box-footer">Mas info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -54,7 +54,7 @@
                             <p>Clientes en el sistema</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="fa fa-users"></i>
                         </div>
                         <a href="{{ route('customers.index') }}" class="small-box-footer">Mas info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -64,14 +64,14 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3>{{ $businessQuantity }}</h3>
 
-                            <p>User Registrations</p>
+                            <p>Empresas en el sistema</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person-add"></i>
+                            <i class="fa fa-briefcase"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('businesses.index') }}" class="small-box-footer">Mas info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -79,14 +79,14 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>65</h3>
+                            <h3>{{ $workOrderQuantity }}</h3>
 
-                            <p>Unique Visitors</p>
+                            <p>Ordenes de trabajo en el sistema</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-pie-graph"></i>
+                            <i class="fa fa-paste"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('work-orders.index') }}" class="small-box-footer">Mas info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->

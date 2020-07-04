@@ -37,7 +37,7 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <a href="{{ route('equipment_types.index') }}" class="btn btn-primary">Volver</a>
+                                <a href="{{ route('equipment-types.index') }}" class="btn btn-primary">Volver</a>
                             </div>
                         </form>
                     </div>

@@ -28,7 +28,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form method="POST" action="{{route('equipment_types.store')}}">
+                        <form method="POST" action="{{route('equipment-types.store')}}">
                             @csrf
                             @include('partials.errors')
                             <div class="card-body">

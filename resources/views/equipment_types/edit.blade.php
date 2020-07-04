@@ -28,7 +28,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form method="POST" action="{{route('equipment_types.update',$equipment_type)}}">
+                        <form method="POST" action="{{route('equipment-types.update',$equipment_type)}}">
                             @csrf
                             @method('PUT')
                             @include('partials.errors')

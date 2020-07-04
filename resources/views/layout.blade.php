@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gijgo/1.9.13/combined/css/gijgo.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -106,7 +107,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route ('users.index')}}" class="nav-link">
+                                <a href="{{route ('work-orders.index')}}" class="nav-link">
                                     <i class="nav-icon fas fa-paste"></i>
                                     <p>Gestion de ordenes</p>
                                 </a>
@@ -123,7 +124,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('equipment_types.index') }}" class="nav-link">
+                                <a href="{{ route('equipment-types.index') }}" class="nav-link">
                                     <i class="nav-icon fas fa-desktop"></i>
                                     <p>tipos de equipo</p>
                                 </a>
@@ -199,6 +200,8 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
 <script src="{{ asset('js/rut.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gijgo/1.9.13/combined/js/gijgo.min.js"></script>
+@yield('scripts')
 
 <script>
     $(function () {

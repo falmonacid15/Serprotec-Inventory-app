@@ -34,7 +34,7 @@ class EquipmentTypeController extends Controller
         $equipment_type->name = $request->get('name');
         $equipment_type->save();
 
-        return redirect()->route('equipment_types.index')->with('success','Registro exitoso');
+        return redirect()->route('equipment-types.index')->with('success','Registro exitoso');
     }
 
 
@@ -65,7 +65,7 @@ class EquipmentTypeController extends Controller
 
         $equipment_type->save();
 
-        return redirect()->route('equipment_types.index')->with('success','Edicion exitosa');
+        return redirect()->route('equipment-types.index')->with('success','Edicion exitosa');
     }
 
 
@@ -74,6 +74,6 @@ class EquipmentTypeController extends Controller
         $equipment_type = EquipmentType::find($id);
         $equipment_type->delete();
 
-        return redirect()->route('equipment_types.index')->with('success','Tipo de equipo eliminado exitosamente');
+        return redirect()->route('equipment-types.index')->with('success','Tipo de equipo eliminado exitosamente');
     }
 }

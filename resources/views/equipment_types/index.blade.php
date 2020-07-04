@@ -20,14 +20,14 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <a class="btn btn-primary mb-3" href="{{route('equipment_types.create')}}">Crear tipo de equipo</a>
+            <a class="btn btn-primary mb-3" href="{{route('equipment-types.create')}}">Crear tipo de equipo</a>
             <div class="row">
                 <div class="col-12">
                     @include('partials.success')
                     <div class="card">
                         <div class="card-header">
                             <div class="card-tools">
-                                <form action="{{ route('equipment_types.index') }}">
+                                <form action="{{ route('equipment-types.index') }}">
                                     <div class="input-group input-group-sm" style="width: 150px;">
                                         <input type="text" name="search" class="form-control float-right" placeholder="busqueda">
                                         <div class="input-group-append">
@@ -55,17 +55,17 @@
                                         <td>{{$equipment_type->id}}</td>
                                         <td>{{$equipment_type->name}}</td>
                                         <td>
-                                            <a href="{{route('equipment_types.show', $equipment_type->id)}}" class="btn btn-primary">
+                                            <a href="{{route('equipment-types.show', $equipment_type->id)}}" class="btn btn-primary">
                                                 <i class="fa fa-eye"></i>
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="{{route('equipment_types.edit', $equipment_type->id)}}" class="btn btn-info">
+                                            <a href="{{route('equipment-types.edit', $equipment_type->id)}}" class="btn btn-info">
                                                 <i class="fa fa-edit"></i>
                                             </a>
                                         </td>
                                         <td>
-                                            <form method="POST" action="{{route('equipment_types.destroy',$equipment_type->id) }}">
+                                            <form method="POST" action="{{route('equipment-types.destroy',$equipment_type->id) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">
