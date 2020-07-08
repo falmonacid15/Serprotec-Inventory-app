@@ -6,10 +6,14 @@ use Closure;
 
 class CheckRole
 {
-    public function handle($request, Closure $next, $role)
+    public function handle($request, Closure $next, ...$roles)
     {
-        if ($request->user()->role == $role){
-            return $next($request);
+        $user = $request->user();
+
+        foreach ($roles as $role) {
+           if ($user->hasRole($role)) {
+               return $next($request);
+           }
         }
 
         return redirect()->route('home')->with('error', 'No tiene permisos suficientes.');

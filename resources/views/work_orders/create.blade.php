@@ -33,7 +33,7 @@
                             @include('partials.errors')
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="customer_id">Equipo</label>
+                                    <label for="equipment_id">Equipo</label>
                                     <select name="equipment_id" id="equipment_id" class="form-control">
                                         <option value="" selected>Seleccione</option>
                                         @foreach($equipments as $equipment)

@@ -92,7 +92,7 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <a href="{{ route('equipments.index') }}" class="btn btn-primary">Volver</a>
+                                <a href="{{ route('work-orders.index') }}" class="btn btn-primary">Volver</a>
                             </div>
                         </form>
                     </div>
