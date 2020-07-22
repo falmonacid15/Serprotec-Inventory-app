@@ -17,11 +17,10 @@ class CreateEquipmentTable extends Migration
             $table->id();
             $table->string('brand');
             $table->string('model');
-            $table->foreignId('business_id');
             $table->foreignId('equipment_type_id');
             $table->timestamps();
+            $table->softDeletes();
 
-            $table->foreign('business_id')->references('id')->on('businesses');
             $table->foreign('equipment_type_id')->references('id')->on('equipment_types');
         });
     }

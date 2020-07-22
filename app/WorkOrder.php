@@ -3,12 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class WorkOrder extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'diagnostic', 'observation', 'start_time', 'end_time', 'start_date', 'end_date', 'ticket_number',
-        'service_tag', 'equipment_id', 'commune_id', 'user_id'
+        'service_tag', 'equipment_id', 'commune_id', 'user_id', 'business_id'
     ];
 
     // nos permite manipular fecha
@@ -30,6 +33,11 @@ class WorkOrder extends Model
     public function commune()
     {
         return $this->belongsTo(Commune::class);
+    }
+
+    public function business()
+    {
+        return $this->belongsTo(Business::class);
     }
 
     public function actions()

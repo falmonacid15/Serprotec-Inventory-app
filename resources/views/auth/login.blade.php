@@ -32,7 +32,7 @@
                 @csrf
                 @include('partials.errors')
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Rut" name="rut" id="rut">
+                    <input type="text" class="form-control" placeholder="Rut" name="rut" id="rut" value="{{ old('rut') }}">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>

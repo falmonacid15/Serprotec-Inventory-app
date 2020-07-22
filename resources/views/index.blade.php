@@ -35,7 +35,6 @@
                     <div class="small-box bg-info">
                         <div class="inner">
                             <h3>{{ $userQuantity }}</h3>
-
                             <p>Usuarios en el sistema</p>
                         </div>
                         <div class="icon">

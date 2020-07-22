@@ -18,6 +18,7 @@ class CreateActionWorkOrder extends Migration
             $table->foreignId('action_id');
             $table->foreignId('work_order_id');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('action_id')->references('id')->on('actions');
             $table->foreign('work_order_id')->references('id')->on('work_orders');

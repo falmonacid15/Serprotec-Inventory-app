@@ -21,6 +21,7 @@ class CreateBusinessesTable extends Migration
             $table->string('social_reason');
             $table->foreignId('customer_id');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('customer_id')->references('id')->on('customers');
         });

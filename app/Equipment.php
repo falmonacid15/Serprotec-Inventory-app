@@ -3,17 +3,20 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Equipment extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
-        'brand', 'model', 'business_id', 'equipment_type_id'
+        'brand', 'model', 'equipment_type_id'
     ];
 
 
-    public function business()
+    public function businesses()
     {
-        return $this->belongsTo(Business::class);
+        return $this->belongsToMany(Business::class);
     }
 
     public function equipmentType()

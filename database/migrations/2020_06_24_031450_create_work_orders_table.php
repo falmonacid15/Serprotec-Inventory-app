@@ -23,12 +23,15 @@ class CreateWorkOrdersTable extends Migration
             $table->date('end_date');
             $table->string('ticket_number');
             $table->string('service_tag');
-            $table->foreignId('equipment_id');
             $table->foreignId('commune_id');
+            $table->foreignId('equipment_id');
+            $table->foreignId('business_id');
             $table->foreignId('user_id');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('equipment_id')->references('id')->on('equipment');
+            $table->foreign('business_id')->references('id')->on('businesses');
             $table->foreign('commune_id')->references('id')->on('communes');
             $table->foreign('user_id')->references('id')->on('users');
         });

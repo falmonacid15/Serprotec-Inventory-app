@@ -21,6 +21,7 @@ class CreateCustomersTable extends Migration
             $table->string('phone');
             $table->string('rut')->unique();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

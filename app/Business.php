@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Business extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
       'name', 'address', 'phone', 'social_reason', 'customer_id'
     ];
@@ -17,6 +20,11 @@ class Business extends Model
 
     public function equipments()
     {
-        return $this->hasMany(Equipment::class);
+        return $this->belongsToMany(Equipment::class);
+    }
+
+    public function workOrders()
+    {
+        return $this->hasMany(WorkOrder::class);
     }
 }
