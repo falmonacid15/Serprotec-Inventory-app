@@ -24,6 +24,7 @@
             <div class="row">
                 <div class="col-12">
                     @include('partials.success')
+                    @include('partials.delete-error')
                     <div class="card">
                         <div class="card-header">
                             <div class="card-tools">
@@ -46,7 +47,6 @@
                                     <th scope="col">Marca</th>
                                     <th scope="col">Modelo</th>
                                     <th scope="col">Tipo</th>
-                                    <th scope="col">Empresa</th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
@@ -59,7 +59,6 @@
                                         <td>{{$equipment->brand}}</td>
                                         <td>{{$equipment->model}}</td>
                                         <td>{{ "{$equipment->equipmentType->name}" }}</td>
-                                        <td>{{ "{$equipment->business->name}" }}</td>
                                         <td>
                                             <a href="{{route('equipments.show', $equipment->id)}}" class="btn btn-primary">
                                                 <i class="fa fa-eye"></i>

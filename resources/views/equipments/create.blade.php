@@ -33,14 +33,6 @@
                             @include('partials.errors')
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="brand">Marca</label>
-                                    <input type="text" class="form-control" id="brand" name="brand" placeholder="Ingrese marca">
-                                </div>
-                                <div class="form-group">
-                                    <label for="brand">Modelo</label>
-                                    <input type="text" class="form-control" id="model" name="model" placeholder="Ingrese modelo">
-                                </div>
-                                <div class="form-group">
                                     <label for="equipment_type_id">Tipo</label>
                                     <select name="equipment_type_id" id="equipment_type_id" class="form-control">
                                         <option value="" selected>Seleccione</option>
@@ -50,13 +42,12 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="business_id">Empresa</label>
-                                    <select name="business_id" id="business_id" class="form-control">
-                                        <option value="" selected>Seleccione</option>
-                                        @foreach($businesses as $business)
-                                            <option value="{{ $business->id}}">{{ "{$business->name}" }}</option>
-                                        @endforeach
-                                    </select>
+                                    <label for="brand">Marca</label>
+                                    <input type="text" class="form-control" id="brand" name="brand" placeholder="Ingrese marca">
+                                </div>
+                                <div class="form-group">
+                                    <label for="brand">Modelo</label>
+                                    <input type="text" class="form-control" id="model" name="model" placeholder="Ingrese modelo">
                                 </div>
                             </div>
                             <!-- /.card-body -->

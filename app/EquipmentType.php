@@ -14,8 +14,8 @@ class EquipmentType extends Model
     ];
 
 
-    public function equipment()
+    public function equipments()
     {
-        return $this->belongsTo(Equipment::class);
+        return $this->hasMany(Equipment::class);
     }
 }

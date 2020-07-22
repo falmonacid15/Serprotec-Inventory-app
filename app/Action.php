@@ -17,6 +17,6 @@ class Action extends Model
 
     public function workOrders()
     {
-        return $this->belongsToMany(WorkOrder::class);
+        return $this->belongsToMany(WorkOrder::class)->withTimestamps();
     }
 }

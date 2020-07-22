@@ -86,6 +86,10 @@ class UserController extends Controller
     public function destroy($id) // Borra los datos de un usuario segun su id
     {
         $user = User::find($id);
+
+        if($user->workOrders->count()){
+            return redirect()->route('users.index')->with('delete-error','Tecnico presente en una orden de trabajo');
+        }
         $user->delete();
 
         return redirect()->route('users.index')->with('success','Usuario eliminado exitosamente');

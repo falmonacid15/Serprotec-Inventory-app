@@ -72,6 +72,10 @@ class EquipmentTypeController extends Controller
     public function destroy($id)
     {
         $equipment_type = EquipmentType::find($id);
+
+        if($equipment_type->equipments->count()){
+            return redirect()->route('equipment-types.index')->with('delete-error','Existen equipos usando este registro');
+        }
         $equipment_type->delete();
 
         return redirect()->route('equipment-types.index')->with('success','Tipo de equipo eliminado exitosamente');

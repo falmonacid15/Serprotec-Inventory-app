@@ -36,7 +36,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Cliente</label>
-                                    <input disabled type="text" class="form-control" value="{{ "{$workOrder->equipment->business->customer->name} {$workOrder->equipment->business->customer->surname}" }}">
+                                    <input disabled type="text" class="form-control" value="{{ "{$workOrder->business->customer->name} {$workOrder->business->customer->surname}" }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Empresa</label>
+                                    <input disabled type="text" class="form-control" value="{{ $workOrder->business->name }}">
                                 </div>
                                 <div class="form-group">
                                     <label>Tipo de equipo</label>

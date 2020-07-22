@@ -33,6 +33,15 @@
                             @include('partials.errors')
                             <div class="card-body">
                                 <div class="form-group">
+                                    <label for="business_id">Empresa</label>
+                                    <select name="business_id" id="business_id" class="form-control">
+                                        <option value="" selected>Seleccione</option>
+                                        @foreach($businesses as $business)
+                                            <option value="{{ $business->id }}">{{ $business->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label for="equipment_id">Equipo</label>
                                     <select name="equipment_id" id="equipment_id" class="form-control">
                                         <option value="" selected>Seleccione</option>

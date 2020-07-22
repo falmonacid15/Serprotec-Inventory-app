@@ -18,7 +18,6 @@ class CreateBusinessEquipment extends Migration
             $table->foreignId('business_id');
             $table->foreignId('equipment_id');
             $table->timestamps();
-            $table->softDeletes();
 
             $table->foreign('business_id')->references('id')->on('businesses');
             $table->foreign('equipment_id')->references('id')->on('equipment');

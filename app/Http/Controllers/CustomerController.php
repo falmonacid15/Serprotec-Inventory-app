@@ -88,6 +88,9 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         $customer = Customer::find($id);
+        if($customer->businesses->count()){
+            return redirect()->route('customers.index')->with('delete-error','Cliente presente en una empresa');
+        }
         $customer->delete();
 
         return redirect()->route('customers.index')->with('success','Cliente eliminado exitosamente');

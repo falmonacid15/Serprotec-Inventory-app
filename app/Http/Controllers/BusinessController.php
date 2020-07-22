@@ -54,7 +54,7 @@ class BusinessController extends Controller
 
     public function show($id)
     {
-        $business = Business::with('customer')->find($id);
+        $business = Business::with('customer', 'equipments')->find($id);
 
         return view('businesses.show', compact ('business'));
     }
@@ -95,6 +95,9 @@ class BusinessController extends Controller
     public function destroy($id)
     {
         $business = Business::find($id);
+        if($business->equipments->count() || $business->workOrders->count()){
+            return redirect()->route('businesses.index')->with('delete-error','Empresa presente en orden de trabajo/equipo');
+        }
         $business->delete();
 
         return redirect()->route('businesses.index')->with('success','Empresa eliminada exitosamente');

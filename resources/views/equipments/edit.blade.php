@@ -34,6 +34,20 @@
                             @include('partials.errors')
                             <div class="card-body">
                                 <div class="form-group">
+                                    <label for="equipment_type_id">Tipo</label>
+                                    <select name="equipment_type_id" id="equipment_type_id" class="form-control">
+                                        <option value="">Seleccione</option>
+                                        @foreach($equipmentTypes as $equipmentType)
+                                            <option
+                                                value="{{ $equipmentType->id}}"
+                                                {{ ($equipment->equipment_type_id == $equipmentType->id) ? 'selected' : ''}}
+                                            >
+                                                {{ "{$equipmentType->name}" }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label for="brand">Marca</label>
                                     <input
                                         type="text"
@@ -54,34 +68,6 @@
                                         value="{{$equipment->model}}"
                                         placeholder="Ingrese modelo"
                                     >
-                                </div>
-                                <div class="form-group">
-                                    <label for="equipment_type_id">Tipo</label>
-                                    <select name="equipment_type_id" id="equipment_type_id" class="form-control">
-                                        <option value="">Seleccione</option>
-                                        @foreach($equipmentTypes as $equipmentType)
-                                            <option
-                                                value="{{ $equipmentType->id}}"
-                                                {{ ($equipment->equipment_type_id == $equipmentType->id) ? 'selected' : ''}}
-                                            >
-                                                {{ "{$equipmentType->name}" }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="business_id">Empresa</label>
-                                    <select name="business_id" id="business_id" class="form-control">
-                                        <option value="">Seleccione</option>
-                                        @foreach($businesses as $business)
-                                            <option
-                                                value="{{ $business->id}}"
-                                                {{ ($equipment->business_id == $business->id) ? 'selected' : ''}}
-                                            >
-                                                {{ "{$business->name}" }}
-                                            </option>
-                                        @endforeach
-                                    </select>
                                 </div>
                             </div>
                             <!-- /.card-body -->

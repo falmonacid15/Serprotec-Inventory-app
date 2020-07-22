@@ -31,20 +31,16 @@
                         <form>
                             <div class="card-body">
                                 <div class="form-group">
+                                    <label for="equipment_type_id">Tipo</label>
+                                    <input disabled type="text" class="form-control" name="equipment_type_id" value="{{"{$equipment->equipmentType->name}"}}">
+                                </div>
+                                <div class="form-group">
                                     <label for="brand">Marca</label>
                                     <input disabled type="text" class="form-control" name="brand" value="{{$equipment->brand}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="model">Modelo</label>
                                     <input disabled type="text" class="form-control" name="model" value="{{$equipment->model}}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="business_id">Empresa</label>
-                                    <input disabled type="text" class="form-control" name="business_id" value="{{"{$equipment->business->name}"}}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="equipment_type_id">Cliente</label>
-                                    <input disabled type="text" class="form-control" name="equipment_type_id" value="{{"{$equipment->equipmentType->name}"}}">
                                 </div>
                             </div>
                             <!-- /.card-body -->

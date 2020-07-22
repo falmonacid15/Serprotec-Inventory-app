@@ -72,6 +72,10 @@ class ActionController extends Controller
     public function destroy($id)
     {
         $action = Action::find($id);
+
+        if($action->workOrders->count()){
+            return redirect()->route('actions.index')->with('delete-error','Accion presente en una orden de trabajo');
+        }
         $action->delete();
 
         return redirect()->route('actions.index')->with('success','Accion eliminado exitosamente');

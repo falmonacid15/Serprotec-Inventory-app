@@ -35,6 +35,10 @@
                                     <input disabled type="text" class="form-control" name="name" value="{{$business->name}}">
                                 </div>
                                 <div class="form-group">
+                                    <label for="rut">Cliente</label>
+                                    <input disabled type="text" class="form-control" name="customer_id" value="{{"{$business->customer->name} {$business->customer->surname}"}}">
+                                </div>
+                                <div class="form-group">
                                     <label for="address">Direccion</label>
                                     <input disabled type="text" class="form-control" name="address" value="{{$business->address}}">
                                 </div>
@@ -46,10 +50,22 @@
                                     <label for="social_reason">Razon social</label>
                                     <input disabled type="text" class="form-control" name="social_reason" value="{{$business->social_reason}}">
                                 </div>
-                                <div class="form-group">
-                                    <label for="rut">Cliente</label>
-                                    <input disabled type="text" class="form-control" name="customer_id" value="{{"{$business->customer->name} {$business->customer->surname}"}}">
-                                </div>
+                                <table class="table table-bordered table-hover mb-3">
+                                    <thead>
+                                    <tr>
+                                        <th>Equipo</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    @foreach($business->equipments as $equipment)
+                                        <tr>
+                                            <td>{{ "{$equipment->brand} / {$equipment->model}" }}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">

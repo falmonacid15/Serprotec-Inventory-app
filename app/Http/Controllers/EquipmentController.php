@@ -6,14 +6,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Equipment;
 use App\EquipmentType;
-use App\Business;
 
 class EquipmentController extends Controller
 {
 
     public function index(Request $request)
     {
-        $equipments = Equipment::with('equipmentType', 'business')
+        $equipments = Equipment::with('equipmentType')
             ->where('brand', 'LIKE', '%'.$request->get('search').'%')
             ->paginate(4)
             ->appends($request->all());
@@ -25,8 +24,7 @@ class EquipmentController extends Controller
     public function create()
     {
         $equipmentTypes = EquipmentType::select('id', 'name')->get();
-        $businesses = Business::select('id', 'name')->get();
-        return view('equipments.create', compact('equipmentTypes', 'businesses'));
+        return view('equipments.create', compact('equipmentTypes'));
     }
 
 
@@ -37,7 +35,6 @@ class EquipmentController extends Controller
             'brand' => 'required|string|max:100',
             'model' => 'required|string|max:100',
             'equipment_type_id' => 'required',
-            'business_id' => 'required',
 
         ]);
 
@@ -47,7 +44,6 @@ class EquipmentController extends Controller
         $equipment->brand = $request->get('brand');
         $equipment->model = $request->get('model');
         $equipment->equipment_type_id = $request->get('equipment_type_id');
-        $equipment->business_id = $request->get('business_id');
         $equipment->save();
 
         return redirect()->route('equipments.index')->with('success','Registro exitoso');
@@ -56,7 +52,7 @@ class EquipmentController extends Controller
 
     public function show($id)
     {
-        $equipment= Equipment::with('equipmentType', 'business')->find($id);
+        $equipment= Equipment::with('equipmentType')->find($id);
 
         return view('equipments.show', compact ('equipment'));
     }
@@ -64,11 +60,10 @@ class EquipmentController extends Controller
 
     public function edit($id)
     {
-        $equipment = Equipment::with('equipmentType', 'business')->find($id);
+        $equipment = Equipment::with('equipmentType')->find($id);
         $equipmentTypes = EquipmentType::select('id', 'name')->get();
-        $businesses = Business::select('id', 'name')->get();
 
-        return view('equipments.edit', compact ('equipmentTypes', 'businesses', 'equipment'));
+        return view('equipments.edit', compact ('equipmentTypes', 'equipment'));
     }
 
 
@@ -78,14 +73,12 @@ class EquipmentController extends Controller
             'brand' => 'required|string|max:100',
             'model' => 'required|string|max:100',
             'equipment_type_id' => 'required',
-            'business_id' => 'required',
         ]);
 
         $equipment = Equipment::find($id);
         $equipment->brand = $request->get('brand');
         $equipment->model = $request->get('model');
         $equipment->equipment_type_id = $request->get('equipment_type_id');
-        $equipment->business_id = $request->get('business_id');
 
         $equipment->save();
 
@@ -96,6 +89,10 @@ class EquipmentController extends Controller
     public function destroy($id)
     {
         $equipment = Equipment::find($id);
+
+        if($equipment->businesses->count() || $equipment->workOrders->count()){
+            return redirect()->route('equipments.index')->with('delete-error','Equipo presente en orden de trabajo/empresa');
+        }
         $equipment->delete();
 
         return redirect()->route('equipments.index')->with('success','Equipo eliminado exitosamente');

@@ -24,6 +24,7 @@
             <div class="row">
                 <div class="col-12">
                     @include('partials.success')
+                    @include('partials.delete-error')
                     <div class="card">
                         <div class="card-header">
                             <div class="card-tools">

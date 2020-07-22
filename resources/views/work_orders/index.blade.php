@@ -46,6 +46,7 @@
                                     <th scope="col">N° de ticket</th>
                                     <th scope="col">Service tag</th>
                                     <th scope="col">Tecnico</th>
+                                    <th scope="col">Empresa</th>
                                     <th scope="col">Equipo</th>
                                     <th scope="col">Comuna</th>
                                     <th scope="col">Inicio</th>
@@ -62,6 +63,7 @@
                                         <td>{{$workOrder->ticket_number}}</td>
                                         <td>{{$workOrder->service_tag}}</td>
                                         <td>{{"{$workOrder->user->name} {$workOrder->user->surname}"}}</td>
+                                        <td>{{ $workOrder->business->name }}</td>
                                         <td>{{"{$workOrder->equipment->brand} / {$workOrder->equipment->model} / {$workOrder->equipment->equipmentType->name}"}}</td>
                                         <td>{{$workOrder->commune->name}}</td>
                                         <td>{{ "{$workOrder->start_date->format('d/m/Y')} {$workOrder->start_time->format('H:m')}" }}</td>

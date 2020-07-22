@@ -10,6 +10,7 @@ use App\Equipment;
 use App\User;
 use App\Action;
 use Carbon\Carbon;
+use App\Business;
 
 
 class WorkOrderController extends Controller
@@ -17,7 +18,7 @@ class WorkOrderController extends Controller
 
     public function index(Request $request)
     {
-        $workOrders = WorkOrder::with('equipment', 'commune', 'user')
+        $workOrders = WorkOrder::with('equipment', 'commune', 'user', 'business')
             ->where('ticket_number', 'LIKE', '%'.$request->get('search').'%')
             ->paginate(4)
             ->appends($request->all());
@@ -32,7 +33,8 @@ class WorkOrderController extends Controller
         $communes = Commune::select('id', 'name')->get();
         $users = User::where('role', 'Técnico')->select('id', 'name')->get();
         $actions = Action::select('id', 'name')->get();
-        return view('work_orders.create', compact('equipments', 'communes', 'users', 'actions'));
+        $businesses = Business::select('id','name')->get();
+        return view('work_orders.create', compact('equipments', 'communes', 'users', 'actions', 'businesses'));
     }
 
 
@@ -43,6 +45,7 @@ class WorkOrderController extends Controller
             'equipment_id' => 'required',
             'commune_id' => 'required',
             'user_id' => 'required',
+            'business_id' => 'required',
             'service_tag' => 'required|max:255',
             'diagnostic' => 'required|max:255',
             'observation' => 'required|max:255',
@@ -60,6 +63,7 @@ class WorkOrderController extends Controller
         $workOrder->equipment_id = $request->get('equipment_id');
         $workOrder->commune_id = $request->get('commune_id');
         $workOrder->user_id = $request->get('user_id');
+        $workOrder->business_id = $request->get('business_id');
         $workOrder->service_tag = $request->get('service_tag');
         $workOrder->diagnostic = $request->get('diagnostic');
         $workOrder->observation = $request->get('observation');
@@ -73,13 +77,16 @@ class WorkOrderController extends Controller
         // hace relacion n:n y la guarda con metodo sync
         $workOrder->actions()->sync($request->get('actions'));
 
+        $business = $workOrder->business;
+        $business->equipments()->attach($request->get('equipment_id'));
+
         return redirect()->route('work-orders.index')->with('success','Registro exitoso');
     }
 
 
     public function show($id)
     {
-        $workOrder= WorkOrder::with('equipment', 'commune', 'user', 'actions')->find($id);
+        $workOrder= WorkOrder::with('equipment', 'commune', 'user', 'actions', 'business')->find($id);
 
         return view('work_orders.show', compact ('workOrder'));
     }
@@ -87,12 +94,13 @@ class WorkOrderController extends Controller
 
     public function edit($id)
     {
-        $workOrder = WorkOrder::with('equipment', 'commune', 'user', 'actions')->find($id);
+        $workOrder = WorkOrder::with('equipment', 'commune', 'user', 'actions', 'business')->find($id);
         $equipments = Equipment::select('id', 'brand', 'model')->get();
         $communes = Commune::select('id', 'name')->get();
         $users = User::select('id', 'name')->get();
         $actions = Action::select('id', 'name')->get();
-        return view('work_orders.edit', compact('equipments', 'communes', 'users', 'workOrder', 'actions'));
+        $businesses = Business::select('id','name')->get();
+        return view('work_orders.edit', compact('equipments', 'communes', 'users', 'workOrder', 'actions', 'businesses'));
     }
 
 
@@ -102,6 +110,7 @@ class WorkOrderController extends Controller
             'equipment_id' => 'required',
             'commune_id' => 'required',
             'user_id' => 'required',
+            'business_id' => 'required',
             'service_tag' => 'required|max:255',
             'diagnostic' => 'required|max:255',
             'observation' => 'required|max:255',
@@ -120,6 +129,7 @@ class WorkOrderController extends Controller
         $workOrder->equipment_id = $request->get('equipment_id');
         $workOrder->commune_id = $request->get('commune_id');
         $workOrder->user_id = $request->get('user_id');
+        $workOrder->business_id = $request->get('business_id');
         $workOrder->service_tag = $request->get('service_tag');
         $workOrder->diagnostic = $request->get('diagnostic');
         $workOrder->observation = $request->get('observation');
@@ -132,6 +142,10 @@ class WorkOrderController extends Controller
         // hace relacion n:n y la guarda con metodo sync
         $workOrder->actions()->sync($request->get('actions'));
 
+        $business = $workOrder->business;
+        $business->equipments()->detach([$workOrder->equipment_id]);
+        $business->equipments()->attach($request->get('equipment_id'));
+
         return redirect()->route('work-orders.index')->with('success','Modificacion exitosa');
     }
 
@@ -140,6 +154,10 @@ class WorkOrderController extends Controller
     {
         $workOrder = WorkOrder::find($id);
         $workOrder->actions()->detach();
+
+        $business = $workOrder->business;
+        $business->equipments()->detach([$workOrder->equipment_id]);
+
         $workOrder->delete();
 
         return redirect()->route('work-orders.index')->with('success','Orden de trabajo eliminada exitosamente');

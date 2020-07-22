@@ -20,7 +20,7 @@ class Business extends Model
 
     public function equipments()
     {
-        return $this->belongsToMany(Equipment::class);
+        return $this->belongsToMany(Equipment::class)->withTimestamps();
     }
 
     public function workOrders()
